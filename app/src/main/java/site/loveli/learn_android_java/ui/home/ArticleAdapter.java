@@ -40,7 +40,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         ViewHolder viewHolder = new ViewHolder(v);
         v.setOnClickListener(v1 -> {
             if (mOnItemClickListener != null) {
-                mOnItemClickListener.onItemClick(v1, (int) v1.getTag());
+                mOnItemClickListener.onItemClick(v1, articles.get((int) v1.getTag()));
             }
         }); // 将创建的Vie注册点击事件
         return viewHolder;
@@ -58,7 +58,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     }
 
     public interface OnItemClickListener {
-        void onItemClick(View view, int position);
+        void onItemClick(View view, Article article);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

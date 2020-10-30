@@ -54,8 +54,10 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(articleAdapter);
         progressBar = root.findViewById(R.id.progressBar);
 
-        articleAdapter.setOnItemClickListener((view, position) -> {
+        articleAdapter.setOnItemClickListener((view, article) -> {
             Intent intent = new Intent(getActivity(), ArticleDetailActivity.class);
+            intent.putExtra("title", article.getTitle());
+            intent.putExtra("content", article.getContent());
             startActivity(intent);
         });
     }
