@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import site.loveli.learn_android_java.R;
@@ -38,8 +39,19 @@ public class HomeFragment extends Fragment {
             homeViewModel.getArticles().observe(getViewLifecycleOwner(), new Observer<List<Article>>() {
                 @Override
                 public void onChanged(List<Article> articles) {
+                    ArrayList<Article> art = new ArrayList<>();
+                    art.addAll(articles);
+                    art.addAll(articles);
+                    art.addAll(articles);
+                    art.addAll(articles);
+                    art.addAll(articles);
+                    art.addAll(articles);
+                    art.addAll(articles);
+                    art.addAll(articles);
+                    art.addAll(articles);
+                    art.addAll(articles);
+                    articleAdapter.addArticles(art);
                     progressBar.setVisibility(View.GONE);
-                    articleAdapter.addArticles(articles);
                 }
             });
         } else {
