@@ -35,9 +35,7 @@ public class AppApplication extends Application  {
 
     public static Retrofit getRetrofitClient() {
         if (retrofit == null) {
-            okhttp3.OkHttpClient client = new okhttp3.OkHttpClient.Builder().build();
             retrofit = new Retrofit.Builder()
-                    .client(client)
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl(Constants.BASE_URL)
