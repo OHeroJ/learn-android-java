@@ -1,4 +1,4 @@
-package site.loveli.learn_android_java.ui.dashboard;
+package site.loveli.learn_android_java.ui.learn;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

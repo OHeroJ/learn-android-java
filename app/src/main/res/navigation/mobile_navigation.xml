@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="site.loveli.learn_android_java.ui.dashboard.LearnFragment"
+        android:name="site.loveli.learn_android_java.ui.learn.LearnFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_learn" />
 

@@ -1,19 +1,24 @@
 package site.loveli.learn_android_java.ui.home;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.List;
+
+import site.loveli.learn_android_java.models.Article;
+
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private MutableLiveData<List<Article>> articles;
 
     public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        articles = new MutableLiveData<>();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public MutableLiveData<List<Article>> getArticles() {
+        return articles;
     }
+
+    public void fetchArticles() {}
+
 }
