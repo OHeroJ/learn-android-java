@@ -17,6 +17,8 @@ import site.loveli.learn_android_java.models.Article;
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
     private List<Article> articles;
 
+    private OnItemClickListener mOnItemClickListener;
+
     public ArticleAdapter() {
         articles = new ArrayList<>();
     }
@@ -35,16 +37,31 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_article, parent, false);
-        return new ViewHolder(v);
+        ViewHolder viewHolder = new ViewHolder(v);
+        v.setOnClickListener(v1 -> {
+            if (mOnItemClickListener != null) {
+                mOnItemClickListener.onItemClick(v1, (int) v1.getTag());
+            }
+        }); // 将创建的Vie注册点击事件
+        return viewHolder;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener) {
+        this.mOnItemClickListener = mOnItemClickListener;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Article article = articles.get(position);
         holder.tvTitle.setText(article.getTitle());
+        holder.itemView.setTag(position);
     }
 
-    public static class ViewHolder extends  RecyclerView.ViewHolder {
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvTitle;
         public ViewHolder(View convertView) {
             super(convertView);
